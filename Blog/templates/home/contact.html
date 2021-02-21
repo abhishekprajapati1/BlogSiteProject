@@ -4,6 +4,20 @@
     Contact Page
 {% endblock title %}
 
+{% block contactActive %}active{% endblock contactActive %}
+
 {% block body %}
-    <h1>This is contact page</h1>
+    <div class="container bg-secondary mt-1">
+        <form action="/contact/" method = "post" class = "p-5"> {% csrf_token %}
+            <h1 class="text-center my-2">Contact BloggingWeb Admin</h1>
+            Name : <input class = "form-control" type="text" name = "name" id = "name">
+            Email : <input class = "form-control" type="email" name = "email" id = "email">
+            Phone no. : <input class = "form-control" type="phone" name = "phone" id = "phone">
+            How may we help you :
+            <textarea name="desc" id="content" class = "form-control">
+            
+            </textarea>
+            <input class = "btn-success btn mt-4" type="submit" value="Send Message">
+        </form>
+    </div>
 {% endblock body %}
