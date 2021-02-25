@@ -9,26 +9,29 @@ Home Page
 {% block body %}
 <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-        <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently
-            about what’s most interesting in this post’s contents.</p>
-        <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+        <h1 class="display-4 fst-italic">{{onePost.title}}</h1>
+        <p class="lead my-3">{{onePost.content| truncatechars:200}}</p>
+        <p class="lead mb-0"><a href="/blog/{{post.slug}}" role="button" class="text-white fw-bold btn btn-primary">Continue reading...</a></p>
     </div>
 </div>
 
-<h2 class="text-center">Popular Blog Posts</h2>
+
+
+<!--From here the mechanism of fetching the latest post starts-->
+<h2 class="text-center">Latest Blog Posts</h2>
+
+{% for post in popularPosts %}
 
 <div class=" mb-2 container">
     <div class="">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                <h3 class="mb-0">Featured post</h3>
-                <div class="mb-1 text-muted">Nov 12</div>
-                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                    additional content.</p>
+                <strong class="d-inline-block mb-2 text-primary">New</strong>
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-muted">{{post.timestamp}}</div>
+                <p class="card-text mb-auto">{{post.content| truncatechars:200}}</p>
                 <div>
-                    <a href="/blog/post/" role="button" class="stretched-link btn btn-primary">Continue reading</a>
+                    <a href="/blog/" role="button" class="stretched-link btn btn-primary">Continue reading</a>
                 </div>
             </div>
             <div class="col-auto d-none d-lg-block">
@@ -44,5 +47,7 @@ Home Page
     </div>
     
 </div>
+
+{% endfor %}
 
 {% endblock body %}

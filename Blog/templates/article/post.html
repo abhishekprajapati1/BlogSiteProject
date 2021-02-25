@@ -3,5 +3,12 @@
 {% block title %}Blog posts.{% endblock title %}
 
 {% block body %}
-    <h1></h1>
+    <div class="container p-5">
+        <div class="d-flex align-items-baseline">
+            <h2 class="text-center">{{post.title}} </h2><span>&nbsp;&nbsp; By - {{post.author}}</span>
+        </div>
+        <p>{{post.timestamp}}</p>
+        <hr>
+        <p>{{post.content}}</p>
+    </div>
 {% endblock body %}

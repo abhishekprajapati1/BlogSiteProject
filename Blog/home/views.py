@@ -1,11 +1,18 @@
 from django.shortcuts import render, HttpResponse
 from .models import Contact
+from article.models import Post
 from django.contrib import messages
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'home/home.html')
+    onePost = Post.objects.filter().first()
+    popularPosts = Post.objects.all()
+    context = {
+        'popularPosts':popularPosts,
+        'onePost':onePost
+    }
+    return render(request, 'home/home.html', context)
     # return HttpResponse("This is home page")
 
 def contact(request):
@@ -26,3 +33,13 @@ def contact(request):
 
 def about(request):
     return render(request, 'home/about.html')
+
+
+def search(request):
+    query = request.GET['query']
+    allPosts = Post.objects.filter(title__icontains = query)
+    
+    context = {
+        'allPosts':allPosts
+    }
+    return render(request, 'home/search.html', context)

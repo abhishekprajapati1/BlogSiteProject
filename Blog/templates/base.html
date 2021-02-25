@@ -40,13 +40,13 @@
                     <li class="nav-item">
                         <a class="nav-link {% block contactActive %}{% endblock contactActive %}" aria-current="page" href="/contact/">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/admin/">Admin Login</a>
-                    </li>
+                    
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" method = "get" action = "/search/">
+                    <input class="form-control me-2" name = "query" id = "query" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success  mx-1" type="submit">Search</button>
+                    <a href = "/admin/" role = "button" class="btn btn-success" type="submit">AdminPanel</a>
+                    
                 </form>
             </div>
         </div>
