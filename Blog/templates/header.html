@@ -1,0 +1,72 @@
+{% url 'home' as home_url %} 
+{% url 'contact' as contact_url %} 
+{% url 'about' as about_url %} 
+{% url 'search' as search_url %}
+{% url 'bloghome' as blog_url %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BloggingWeb</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.path == home_url %}active{% endif %}"
+            aria-current="page"
+            href="/"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.path == blog_url %}active{% endif %}"
+            aria-current="page"
+            href="/blog/"
+            >blog</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.path == about_url %}active{% endif %}"
+            aria-current="page"
+            href="/about/"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {% if request.path == contact_url %}active{% endif %}"
+            aria-current="page"
+            href="/contact/"
+            >Contact</a
+          >
+        </li>
+      </ul>
+      <form class="d-flex" method="get" action="/search/">
+        <input
+          class="form-control me-2"
+          name="query"
+          id="query"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-success mx-1" type="submit">Search</button>
+        <a href="{% url 'admin:index' %}" role="button" class="btn btn-success" type="submit"
+          >AdminPanel</a
+        >
+      </form>
+    </div>
+  </div>
+</nav>
